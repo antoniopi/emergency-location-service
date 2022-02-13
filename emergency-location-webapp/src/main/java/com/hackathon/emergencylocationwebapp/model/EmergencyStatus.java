@@ -1,15 +1,15 @@
 package com.hackathon.emergencylocationwebapp.model;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.Entity;
+import javax.persistence.Embeddable;
 
-@Entity
-@Getter
-@NoArgsConstructor
+@Embeddable
+@AllArgsConstructor
 public enum EmergencyStatus {
-    OPEN,
-    ONGOING,
-    CLOSED
+    OPEN("Open"),
+    ONGOING("On going"),
+    CLOSED("Closed");
+
+    private String name;
 }
