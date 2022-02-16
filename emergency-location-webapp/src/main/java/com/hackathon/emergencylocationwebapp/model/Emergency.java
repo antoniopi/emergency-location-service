@@ -26,6 +26,8 @@ public class Emergency {
 
     private String callerLastname;
 
+    private String callerTelephoneNumber;
+
     private String reason;
 
     private EmergencyStatus status;

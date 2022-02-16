@@ -40,8 +40,8 @@ public class EmergencyController {
     public ResponseEntity<Emergency> updateEmergency(@PathVariable Long id, @RequestBody Emergency emergency) {
         Emergency updatedEmergency = repo.findById(id)
                 .map(storedEmergency -> {
-                    storedEmergency.setStatus(emergency.getStatus());
-                    storedEmergency.setReason(emergency.getReason());
+                    storedEmergency.setLocation(emergency.getLocation());
+                    storedEmergency.setCallerTelephoneNumber(emergency.getCallerTelephoneNumber());
                     return repo.save(storedEmergency);
                 })
                 .orElseGet(() -> repo.save(emergency));
