@@ -6,7 +6,7 @@ import { Icon } from "leaflet";
 
 function App() {
   return (
-    <MapContainer center={[54.2, -6.34]} zoom={12}scrollWheelZoom={false}>
+    <MapContainer center={[53.9, -6.21]} zoom={12}scrollWheelZoom={false}>
       <TileLayer
     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
