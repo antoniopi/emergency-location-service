@@ -5,6 +5,6 @@ import javax.persistence.Embeddable;
 @Embeddable
 public enum EmergencyStatus {
     OPEN,
-    ONGOING,
+    IN_PROGRESS,
     CLOSED;
 }

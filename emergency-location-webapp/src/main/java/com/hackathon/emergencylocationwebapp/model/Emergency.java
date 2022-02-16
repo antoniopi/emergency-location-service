@@ -1,5 +1,6 @@
 package com.hackathon.emergencylocationwebapp.model;
 
+import com.hackathon.emergencylocationwebapp.config.EmergencyStatusConverter;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,5 +31,8 @@ public class Emergency {
 
     private String reason;
 
-    private EmergencyStatus status;
+//    @Enumerated(EnumType.STRING)
+//    private EmergencyStatus status;
+
+    private String status;
 }
