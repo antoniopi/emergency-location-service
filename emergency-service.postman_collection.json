@@ -1,0 +1,136 @@
+{
+	"info": {
+		"_postman_id": "350e32e0-d132-437d-9555-d9101448fc48",
+		"name": "emergency-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/emergencies",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"emergencies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/emergencies/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"emergencies",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Emergency",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"location\": {\r\n        \"latitude\": 1.0,\r\n        \"longitude\": 1.0\r\n    },\r\n    \"callerName\": \"callerName\",\r\n    \"callerLastname\": \"callerLastName\",\r\n    \"callerTelephoneNumeber\": \"555-5555\"\r\n    \"reason\": \"reason\",\r\n    \"status\": \"OPEN\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/emergencies/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"emergencies",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update emergency",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"location\": {\r\n        \"latitude\": 100.0,\r\n        \"longitude\": 100.0\r\n    },\r\n    \"callerName\": \"callerName\",\r\n    \"callerLastname\": \"callerLastName\",\r\n    \"reason\": \"reason\",\r\n    \"status\": \"OPEN\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/emergencies/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"emergencies",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update emergency location",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"latitude\": 1.0,\r\n    \"longitude\": 1.0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/emergencies/1/updateLocation",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"emergencies",
+						"1",
+						"updateLocation"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
