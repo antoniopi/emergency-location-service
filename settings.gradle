@@ -1,0 +1,2 @@
+rootProject.name = 'emergency-services'
+include ":emergency-location-frontend", ":emergency-location-webapp"
