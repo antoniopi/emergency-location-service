@@ -36,7 +36,8 @@ tasks.named('test') {
 }
 
 task copyWebApp(type: Copy) {
-	from "$rootDir/emergency-location-frontend/build"
+	from "$rootDir/emergency-location-frontend/public"
+	from "$rootDir/emergency-location-frontend/src"
 	into "$rootDir/emergency-location-webapp/build/resources/main/static/."
 }
 
