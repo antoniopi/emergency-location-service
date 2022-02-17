@@ -1,2 +1,5 @@
-rootProject.name = 'emergency-services'
+rootProject.name = 'emergency-location-webapp'
 include ":emergency-location-frontend", ":emergency-location-webapp"
+group = 'com.hackathon'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
