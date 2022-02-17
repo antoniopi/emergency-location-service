@@ -14,4 +14,4 @@ buildscript {
 	}
 }
 
-task stage(dependsOn: [':emergency-location-webapp:build', ':emergency-location-webapp:clean'])
+task stage(dependsOn: [':emergency-location-webapp:bootRun', ':emergency-location-webapp:clean'])
