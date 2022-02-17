@@ -13,3 +13,5 @@ buildscript {
 		classpath "com.github.node-gradle:gradle-node-plugin:3.1.1"
 	}
 }
+
+task stage(dependsOn: [':emergency-location-webapp:build', ':emergency-location-webapp:clean'])
