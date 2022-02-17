@@ -22,8 +22,8 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
-.idea/
-.gradle/
+.idea
+.gradle
 out/
 
 # dependencies
@@ -35,8 +35,12 @@ node_modules/
 /coverage
 
 # production
+HELP.md
 build/
 node/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
 
 # misc
 .DS_Store
