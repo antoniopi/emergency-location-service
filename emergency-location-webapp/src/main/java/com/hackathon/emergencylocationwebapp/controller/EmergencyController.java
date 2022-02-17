@@ -50,7 +50,7 @@ public class EmergencyController {
 
     @PutMapping("/{id}/updateLocation")
     public ResponseEntity<Emergency> updateEmergencyLocation(@PathVariable Long id, @RequestBody Location location) {
-        Emergency emergency = repo.findById(id).orElseThrow();
+        Emergency emergency = repo.findById(id).orElseThrow(RuntimeException::new);
         emergency.setLocation(location);
         repo.save(emergency);
         return ResponseEntity.ok().build();
