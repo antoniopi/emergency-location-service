@@ -33,5 +33,10 @@ task appNpmBuild(type: NpmTask) {
   args = ["run", "build"]
 }
 
+task copyWebApp(type: Copy) {
+  from "$rootDir/emergency-location-frontend/build"
+  into "$rootDir/emergency-location-webapp/build/resources/main/static/."
+}
+
 appNpmBuild.dependsOn(appNpmInstall)
-assemble.dependsOn(appNpmBuild)
+copyWebApp.dependsOn(appNpmBuild)

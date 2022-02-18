@@ -35,10 +35,4 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
-task copyWebApp(type: Copy) {
-	from "$rootDir/emergency-location-frontend/build"
-	into "$rootDir/emergency-location-webapp/build/resources/main/static/."
-}
-
-bootJar.dependsOn(copyWebApp)
-compileJava.dependsOn(":emergency-location-frontend:build")
+compileJava.dependsOn(":emergency-location-frontend:copyWebApp")
