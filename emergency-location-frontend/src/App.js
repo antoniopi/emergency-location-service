@@ -28,7 +28,7 @@ function App() {
                         setError(error);
                     }
                 )
-        })
+        }, 1000)
         return () => clearInterval(id);
     })
 
