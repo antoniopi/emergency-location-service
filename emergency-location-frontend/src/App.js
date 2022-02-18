@@ -13,7 +13,7 @@ function App() {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/emergencies")
+        fetch("http://emergency-location-service.herokuapp.com/api/emergencies")
             .then(res => res.json())
             .then(
                 (result) => {
