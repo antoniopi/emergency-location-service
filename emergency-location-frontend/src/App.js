@@ -13,21 +13,24 @@ function App() {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
-        fetch("/api/emergencies")
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    setIsLoaded(true);
-                    console.log(result)
-                    setItems(result);
-                },
-                (error) => {
-                    setIsLoaded(true);
-                    console.log(error)
-                    setError(error);
-                }
-            )
-    }, [])
+        const id = setInterval(() => {
+            fetch("/api/emergencies")
+                .then(res => res.json())
+                .then(
+                    (result) => {
+                        setIsLoaded(true);
+                        console.log(result)
+                        setItems(result);
+                    },
+                    (error) => {
+                        setIsLoaded(true);
+                        console.log(error)
+                        setError(error);
+                    }
+                )
+        })
+        return () => clearInterval(id);
+    })
 
     if (error) {
         return <div>Error: {error.message}</div>;
