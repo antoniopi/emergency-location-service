@@ -13,7 +13,7 @@ function App() {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
-        fetch("https://emergency-location-service.herokuapp.com/api/emergencies")
+        fetch("/api/emergencies")
             .then(res => res.json())
             .then(
                 (result) => {
