@@ -3,7 +3,10 @@ package com.hackathon.emergencylocationwebapp.controller;
 import com.hackathon.emergencylocationwebapp.model.Emergency;
 import com.hackathon.emergencylocationwebapp.model.Location;
 import com.hackathon.emergencylocationwebapp.repository.EmergencyRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.converter.SimpleMessageConverter;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -15,6 +18,9 @@ import java.util.List;
 public class EmergencyController {
 
     private final EmergencyRepository repo;
+
+    @Autowired
+    private SimpMessagingTemplate template;
 
     public EmergencyController(EmergencyRepository repo) {
         this.repo = repo;
@@ -33,6 +39,7 @@ public class EmergencyController {
     @PostMapping
     public ResponseEntity<Emergency> createEmergency(@RequestBody Emergency emergency) throws URISyntaxException {
         Emergency savedEmergency = repo.save(emergency);
+        template.convertAndSend("/topic/emergencies/new", savedEmergency);
         return ResponseEntity.created(new URI("/emergencies/" + savedEmergency.getId())).body(savedEmergency);
     }
 
@@ -45,6 +52,7 @@ public class EmergencyController {
                     return repo.save(storedEmergency);
                 })
                 .orElseGet(() -> repo.save(emergency));
+        template.convertAndSend("/topic/emergencies/update", emergency);
         return ResponseEntity.ok(updatedEmergency);
     }
 
@@ -52,19 +60,22 @@ public class EmergencyController {
     public ResponseEntity<Emergency> updateEmergencyLocation(@PathVariable Long id, @RequestBody Location location) {
         Emergency emergency = repo.findById(id).orElseThrow();
         emergency.setLocation(location);
-        repo.save(emergency);
+        Emergency updatedEmergency = repo.save(emergency);
+        template.convertAndSend("/topic/emergencies/update", emergency);
         return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Emergency> deleteEmergency(@PathVariable Long id) {
         repo.deleteById(id);
+        template.convertAndSend("/topic/emergencies/delete", id);
         return ResponseEntity.ok().build();
     }
 
     @DeleteMapping
     public ResponseEntity<Emergency> deleteAllEmergencies() {
         repo.deleteAll();
+        template.convertAndSend("/topic/emergencies/delete/all");
         return ResponseEntity.ok().build();
     }
 }
