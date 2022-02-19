@@ -75,7 +75,7 @@ public class EmergencyController {
     @DeleteMapping
     public ResponseEntity<Emergency> deleteAllEmergencies() {
         repo.deleteAll();
-        template.convertAndSend("/topic/emergencies/delete/all");
+        template.convertAndSend("/topic/emergencies/delete/all", "");
         return ResponseEntity.ok().build();
     }
 }
