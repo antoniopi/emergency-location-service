@@ -39,7 +39,7 @@ public class OutgoingReceiver extends BroadcastReceiver {
                 "Outgoing: " + number,
                 Toast.LENGTH_LONG).show();
 
-        if(number.equals("0876506847")) {
+        if(number.equals("123456789")) {
             if(client == null) {
                 client = LocationServices.getFusedLocationProviderClient(mainAppContext);
             }
